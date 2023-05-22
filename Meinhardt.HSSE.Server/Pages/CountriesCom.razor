@@ -1,0 +1,43 @@
+﻿@page "/Countries"
+<h1>Country List</h1>
+
+@if (CountryList == null)
+{
+    <SpinnerCom></SpinnerCom>
+}
+else
+{
+    <div class="mb-3 mt-3">
+        <a class="btn btn-primary" href="/EditCountry" >Add Country</a>
+    </div>
+    <table class="table table-border table-striped table-hover">
+        <thead class="table-dark">
+            <th>Id</th>
+            <th>Country</th>
+            <th>Code1</th>
+            <th>Code2</th>
+            <th></th>
+        </thead>
+        <tbody>
+            @foreach (var item in CountryList)
+            {
+                <tr>
+                    <td>@item?.Id</td>
+                    <td>@item?.Name</td>
+                    <td>@item?.Code1</td>
+                    <td>@item?.Code2</td>
+                    <td>
+                        <a href="@($"EditCountry/{item?.Id}")" class="btn btn-info" >
+                            <i class="oi oi-pencil"></i>
+                        </a>
+                        <a class="btn btn-danger">
+                            <i class="oi oi-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+

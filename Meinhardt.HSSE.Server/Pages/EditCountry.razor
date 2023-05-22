@@ -1,0 +1,40 @@
+﻿@page "/EditCountry/{Id?}"
+<PageTitle>Country</PageTitle>
+
+@if (Country == null)
+{
+     <div class="spinner">
+     </div>    
+}
+else
+{
+<div class="row">
+    <div class="col-4">
+        <EditForm Model="@Country" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator/>
+            <h3>Edit Country</h3>
+            <hr />
+            <div class="mb-3">
+                <label for="CountryName" class="form-label">Country Name:</label>
+                <InputText id="CountryName" class="form-control" @bind-Value="Country.Name"></InputText>
+                <ValidationMessage For="@(()=> Country.Name)"/>
+            </div>
+            <div class="mb-3">
+                <label for="Code1" class="form-label">Code2:</label>
+                <InputText id="Code1" class="form-control" @bind-Value="Country.Code1"></InputText>
+                    <ValidationMessage For="@(()=> Country.Code1)" />
+            </div>
+            <div class="mb-3">
+                <label for="Code2" class="form-label">Code2:</label>
+                <InputText id="Code2" class="form-control" @bind-Value="Country.Code2"></InputText>
+                    <ValidationMessage For="@(()=> Country.Code2)" />
+            </div>
+            <div class="mb-3">                
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a href="/Countries" class="btn btn-secondary">Back</a>
+            </div>
+            
+        </EditForm>
+    </div>
+</div>
+}
